@@ -1,0 +1,48 @@
+﻿@model IEnumerable<CaldwellHotels.Models.RoomStyle>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.BedroomDescription)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.BathroomDescription)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.KitchenDescription)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.BedroomDescription)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BathroomDescription)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.KitchenDescription)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.StyleID">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.StyleID">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.StyleID">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

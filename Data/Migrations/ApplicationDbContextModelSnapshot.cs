@@ -82,6 +82,8 @@ namespace CaldwellHotels.Migrations
 
                     b.HasIndex("PersonID");
 
+                    b.HasIndex("RoomID");
+
                     b.ToTable("Reservations");
                 });
 
@@ -332,9 +334,15 @@ namespace CaldwellHotels.Migrations
 
             modelBuilder.Entity("CaldwellHotels.Models.Reservation", b =>
                 {
-                    b.HasOne("CaldwellHotels.Models.Room", "Room")
+                    b.HasOne("CaldwellHotels.Models.Person", "Persons")
                         .WithMany()
                         .HasForeignKey("PersonID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("CaldwellHotels.Models.Room", "Rooms")
+                        .WithMany()
+                        .HasForeignKey("RoomID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using CaldwellHotels.Models;
@@ -28,18 +29,19 @@ namespace CaldwellHotels.Data
             //Forcefully assigns primary key as add-migrations requested it upon execution
             builder.Entity<RoomStyle>().HasKey(x => x.StyleID);
 
-            //builder.Entity<Room>().HasOne(x => x.RoomID)
+            //builder.Entity<Reservation>().HasOne(x => x.RoomID)
+                
 
            //For a reservation entry, ensure there's a RoomID
            builder.Entity<Reservation>()
-               .HasOne(r => r.Room)
+               .HasOne(r => r.Rooms)
                //.WithMany(x => x.Reservations)
                .WithMany()
                .HasForeignKey(y => y.RoomID);
 
           //For a reservation entry, ensure there's a PersonID
            builder.Entity<Reservation>()
-               .HasOne(r => r.Room)
+               .HasOne(r => r.Persons)
                .WithMany()
                //.WithMany(x => x.Reservations)
                .HasForeignKey(y => y.PersonID);

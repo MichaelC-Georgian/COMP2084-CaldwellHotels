@@ -11,13 +11,22 @@ namespace CaldwellHotels.Models
     {
         public int ReservationID { get; set; } //PK
         [Required]
-        public Room Room { get; set; } //FK
+
+        //public Room Room { get; set; } //FK
+
         public int PersonID { get; set; } //FK
+
         public int RoomID { get; set; } //FK
-        [ForeignKey("RoomID")]
+
         //public Person Person { get; set; } //FK    
+
         public DateTime StartDate { get; set; }
+
         public DateTime EndDate { get; set; }
-        
+
+        public virtual Room Rooms { get; set; }
+
+        public virtual Person Persons { get; set; }
+
     }
 }
