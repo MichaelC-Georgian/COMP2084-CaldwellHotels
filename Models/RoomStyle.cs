@@ -8,9 +8,11 @@ namespace CaldwellHotels.Models
 {
     public class RoomStyle
     {
-        public int StyleID { get; set; } //PK
+        public int StyleID { get; set; } //PK       
         [Required]
-        public String RoomType { get; set; }
-        public String RoomDescription { get; set; }
+        public int BedroomDescription { get; set; }
+        public int BathroomDescription { get; set; } 
+        public int KitchenDescription { get; set; } 
+        public ICollection<Room> Rooms { get; set; }
     }
 }

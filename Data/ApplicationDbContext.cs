@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using CaldwellHotels.Models;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
@@ -20,36 +22,25 @@ namespace CaldwellHotels.Data
         protected override void OnModelCreating(ModelBuilder builder)
         {
             base.OnModelCreating(builder);
-            //Not gonna lie - am confused to all hell, 
-            // Couldn't get code from S2E3 working so I visited 
-            // https://docs.microsoft.com/en-us/aspnet/core/security/authentication/customize-identity-model?view=aspnetcore-3.1
-            // And based code off their examples... Maybe it'll work?
 
+            //Gone off the deep end - Take me home ~~~~~ country roads ~~~~ west virginia
+            builder.Entity<RoomStyle>().HasKey(x => x.StyleID);
 
-            //Creates a foreign key requirement for Reservation based on PersonID
             builder.Entity<Reservation>()
-                .HasMany<Reservation>().WithOne()
-                .HasForeignKey(p => p.PersonID).IsRequired();
+                .HasOne(r => r.Room)
+                .WithMany(x => x.Reservations)
+                .HasForeignKey(y => y.RoomID);
 
-            //Creates a foreign key requirement for Reservation based on RoomID
             builder.Entity<Reservation>()
-                .HasMany<Reservation>().WithOne()
-                .HasForeignKey(p => p.RoomID).IsRequired();
+                .HasOne(r => r.Room)
+                .WithMany(x => x.Reservations)
+                .HasForeignKey(y => y.PersonID);
 
-            //Creates a foreign key requirement for Room based on BathroomStyle
             builder.Entity<Room>()
-                .HasMany<Room>().WithOne()
-                .HasForeignKey(p => p.BathroomStyle).IsRequired();
+                .HasOne(r => r.RoomStyle)
+                .WithMany(x => x.Rooms)
+                .HasForeignKey(y => y.RoomStyleID);
 
-            //Creates a foreign key requirement for Room based on BedroomStyle
-            builder.Entity<Room>()
-                .HasMany<Room>().WithOne()
-                .HasForeignKey(p => p.BedroomStyle).IsRequired();
-
-            //Creates a foreign key requirement for Room based on KitchenStyle
-            builder.Entity<Room>()
-                .HasMany<Room>().WithOne()
-                .HasForeignKey(p => p.KitchenStyle).IsRequired();
         }
 
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)

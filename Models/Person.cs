@@ -10,7 +10,6 @@ namespace CaldwellHotels.Models
     {
         public int PersonID { get; set; } //PK
         [Required]
-
         public String FirstName { get; set; }
         public String LastName { get; set; }
         public String PhoneNumber { get; set; }

@@ -12,8 +12,8 @@ namespace CaldwellHotels.Models
         [Required]
         public int RoomFloor { get; set; }
         public bool RoomAccessible { get; set; }
-        public RoomStyle BedroomStyle { get; set; } //FK
-        public RoomStyle BathroomStyle { get; set; } //FK
-        public RoomStyle KitchenStyle { get; set; } //FK
+        public RoomStyle RoomStyle { get; set; }
+        public int RoomStyleID { get; set; }
+        public ICollection<Reservation> Reservations { get; set; }
     }
 }
