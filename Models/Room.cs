@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -13,7 +14,8 @@ namespace CaldwellHotels.Models
         public int RoomFloor { get; set; }
         public bool RoomAccessible { get; set; }
         public RoomStyle RoomStyle { get; set; }
-        public int RoomStyleID { get; set; }
-        public ICollection<Reservation> Reservations { get; set; }
+        [ForeignKey("StyleID")]
+        public int StyleID { get; set; }
+        //public ICollection<Reservation> Reservations { get; set; }
     }
 }
