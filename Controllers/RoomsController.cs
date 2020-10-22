@@ -48,7 +48,7 @@ namespace CaldwellHotels.Controllers
         // GET: Rooms/Create
         public IActionResult Create()
         {
-            ViewData["StyleID"] = new SelectList(_context.RoomStyles, "StyleID", "BedroomDescription");
+            ViewData["StyleID"] = new SelectList(_context.RoomStyles, "StyleID", "StyleID");
             return View();
         }
 
@@ -65,7 +65,7 @@ namespace CaldwellHotels.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["StyleID"] = new SelectList(_context.RoomStyles, "StyleID", "BedroomDescription", room.StyleID);
+            ViewData["StyleID"] = new SelectList(_context.RoomStyles, "StyleID", "StyleID", room.StyleID);
             return View(room);
         }
 
@@ -82,7 +82,7 @@ namespace CaldwellHotels.Controllers
             {
                 return NotFound();
             }
-            ViewData["StyleID"] = new SelectList(_context.RoomStyles, "StyleID", "BedroomDescription", room.StyleID);
+            ViewData["StyleID"] = new SelectList(_context.RoomStyles, "StyleID", "StyleID", room.StyleID);
             return View(room);
         }
 
@@ -118,7 +118,7 @@ namespace CaldwellHotels.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["StyleID"] = new SelectList(_context.RoomStyles, "StyleID", "BedroomDescription", room.StyleID);
+            ViewData["StyleID"] = new SelectList(_context.RoomStyles, "StyleID", "StyleID", room.StyleID);
             return View(room);
         }
 

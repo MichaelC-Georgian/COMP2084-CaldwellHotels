@@ -1,11 +1,11 @@
 ﻿@model IEnumerable<CaldwellHotels.Models.Reservation>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Reservation Explorer";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h1>Index</h1>
+<h1>Reservation Explorer</h1>
 
 <p>
     <a asp-action="Create">Create New</a>
@@ -20,10 +20,10 @@
                 @Html.DisplayNameFor(model => model.EndDate)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Rooms)
+                @Html.DisplayNameFor(model => model.RoomID)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Persons)
+                @Html.DisplayNameFor(model => model.PersonID)
             </th>
             <th></th>
         </tr>
@@ -41,7 +41,7 @@
                 @Html.DisplayFor(modelItem => item.Rooms.RoomID)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Persons.FirstName)
+                @Html.DisplayFor(modelItem => item.Persons.PersonID)
             </td>
             <td>
                 <a asp-action="Edit" asp-route-id="@item.ReservationID">Edit</a> |

@@ -49,7 +49,7 @@ namespace CaldwellHotels.Controllers
         // GET: Reservations/Create
         public IActionResult Create()
         {
-            ViewData["PersonID"] = new SelectList(_context.Persons, "PersonID", "FirstName");
+            ViewData["PersonID"] = new SelectList(_context.Persons, "PersonID", "PersonID");
             ViewData["RoomID"] = new SelectList(_context.Rooms, "RoomID", "RoomID");
             return View();
         }
@@ -67,7 +67,7 @@ namespace CaldwellHotels.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["PersonID"] = new SelectList(_context.Persons, "PersonID", "FirstName", reservation.PersonID);
+            ViewData["PersonID"] = new SelectList(_context.Persons, "PersonID", "PersonID", reservation.PersonID);
             ViewData["RoomID"] = new SelectList(_context.Rooms, "RoomID", "RoomID", reservation.RoomID);
             return View(reservation);
         }
@@ -85,7 +85,7 @@ namespace CaldwellHotels.Controllers
             {
                 return NotFound();
             }
-            ViewData["PersonID"] = new SelectList(_context.Persons, "PersonID", "FirstName", reservation.PersonID);
+            ViewData["PersonID"] = new SelectList(_context.Persons, "PersonID", "PersonID", reservation.PersonID);
             ViewData["RoomID"] = new SelectList(_context.Rooms, "RoomID", "RoomID", reservation.RoomID);
             return View(reservation);
         }
@@ -122,7 +122,7 @@ namespace CaldwellHotels.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["PersonID"] = new SelectList(_context.Persons, "PersonID", "FirstName", reservation.PersonID);
+            ViewData["PersonID"] = new SelectList(_context.Persons, "PersonID", "PersonID", reservation.PersonID);
             ViewData["RoomID"] = new SelectList(_context.Rooms, "RoomID", "RoomID", reservation.RoomID);
             return View(reservation);
         }

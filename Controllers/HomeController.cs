@@ -27,7 +27,7 @@ namespace CaldwellHotels.Controllers
         {
             return View();
         }
-        public IActionResult MakeReservation()
+        public IActionResult Admin()
         {
             return View();
         }

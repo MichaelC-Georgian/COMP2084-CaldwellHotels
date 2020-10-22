@@ -1,11 +1,11 @@
 ﻿@model IEnumerable<CaldwellHotels.Models.Room>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Room Explorer";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h1>Index</h1>
+<h1>Room Explorer</h1>
 
 <p>
     <a asp-action="Create">Create New</a>
@@ -20,7 +20,7 @@
                 @Html.DisplayNameFor(model => model.RoomAccessible)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.RoomStyle)
+                @Html.DisplayNameFor(model => model.StyleID)
             </th>
             <th></th>
         </tr>
@@ -35,7 +35,7 @@
                 @Html.DisplayFor(modelItem => item.RoomAccessible)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.RoomStyle.BedroomDescription)
+                @Html.DisplayFor(modelItem => item.RoomStyle.StyleID)
             </td>
             <td>
                 <a asp-action="Edit" asp-route-id="@item.RoomID">Edit</a> |
