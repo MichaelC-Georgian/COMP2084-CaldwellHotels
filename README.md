@@ -13,4 +13,7 @@ Rooms Table - General room information such as accessability, Floor number.
 Reservation Table - Links the Rooms and Persons table with a start and end date to control actual reservation availabiltiy
 
             
+            
+            
+            
 The original GitHub repository for this project can be found here for those who have access to it: https://github.com/MichaelC-Georgian/COMP2084-HotelProject
