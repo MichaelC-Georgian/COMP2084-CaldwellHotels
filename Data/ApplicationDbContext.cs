@@ -30,11 +30,11 @@ namespace CaldwellHotels.Data
             builder.Entity<Reservation>()
                 .HasMany<Reservation>().WithOne()
                 .HasForeignKey(p => p.PersonID).IsRequired();
+
             //Creates a foreign key requirement for Reservation based on RoomID
             builder.Entity<Reservation>()
                 .HasMany<Reservation>().WithOne()
                 .HasForeignKey(p => p.RoomID).IsRequired();
-
 
             //Creates a foreign key requirement for Room based on BathroomStyle
             builder.Entity<Room>()
