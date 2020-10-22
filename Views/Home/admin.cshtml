@@ -2,20 +2,21 @@
     ViewData["Title"] = "Admin Panel";
 }
 <div class="text-center">
-    <p>Welcome to the admin panel, follow any of the links to their respecitive database management tools.</p>
-</div>
+    <h4>Welcome to the admin panel, follow any of the links to their respecitive database management tools.</h4>
 
-<ul class="">
-    <li class="">
-        <a class="" asp-area="" asp-controller="Reservations" asp-action="Index">Reservations Explorer</a>
-    </li>
-    <li class="">
-        <a class="" asp-area="" asp-controller="People" asp-action="Index">People Explorer</a>
-    </li>
-    <li class="">
-        <a class="" asp-area="" asp-controller="Rooms" asp-action="Index">Rooms Explorer</a>
-    </li>
-    <li class="">
-        <a class="" asp-area="" asp-controller="RoomStyles" asp-action="Index">Room Styles Explorer</a>
-    </li>
-</ul>
+
+    <ul class="list-group-item text-primary bg-dark">
+        <li class="list-group-item">
+            <a class="nav-link text-center" asp-area="" asp-controller="Reservations" asp-action="Index">Reservations Explorer</a>
+        </li>
+        <li class="list-group-item bg-light">
+            <a class="nav-link text-center" asp-area="" asp-controller="People" asp-action="Index">People Explorer</a>
+        </li>
+        <li class="list-group-item">
+            <a class="nav-link text-center" asp-area="" asp-controller="Rooms" asp-action="Index">Rooms Explorer</a>
+        </li>
+        <li class="list-group-item bg-light">
+            <a class="nav-link text-center" asp-area="" asp-controller="RoomStyles" asp-action="Index">Room Styles Explorer</a>
+        </li>
+    </ul>
+</div>
