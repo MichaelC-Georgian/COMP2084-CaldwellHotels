@@ -7,26 +7,28 @@ using System.Threading.Tasks;
 
 namespace CaldwellHotels.Models
 {
+    /// <summary>
+    /// Links Room and Person objects together within a timeslot (between startDate and endDate) to allow for a unique reservation
+    /// </summary>
     public class Reservation
     {
-        public int ReservationID { get; set; } //PK
+        public int ReservationID { get; set; } //Primary Key
         [Required]
 
-        //public Room Room { get; set; } //FK
+        public int PersonID { get; set; } //Foreign key in reference to a person object
 
-        public int PersonID { get; set; } //FK
+        public int RoomID { get; set; } //Foreign key in reference to a room object
 
-        public int RoomID { get; set; } //FK
+        public DateTime StartDate { get; set; } //The start date & Time of a reservation
 
-        //public Person Person { get; set; } //FK    
+        public DateTime EndDate { get; set; } //The end date & Time of a reservation
 
-        public DateTime StartDate { get; set; }
+        public virtual Room Rooms { get; set; } //Allows for referecing from ApplicationDbContext.cs
 
-        public DateTime EndDate { get; set; }
+        public virtual Person Persons { get; set; } //Allows for referecing from ApplicationDbContext.cs
 
-        public virtual Room Rooms { get; set; }
-
-        public virtual Person Persons { get; set; }
-
+        //As a side note, "virtual" allows a method or property to be overriden under certain circumstances, 
+        //I dont fully understand it, but after over 10 literal hours of bashing my head against ApplicationDbContext & Scaffolding
+        //This is what worked.
     }
 }
