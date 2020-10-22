@@ -4,12 +4,13 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace HotelProject.Models
+namespace CaldwellHotels.Models
 {
     public class Person
     {
         public int PersonID { get; set; } //PK
         [Required]
+
         public String FirstName { get; set; }
         public String LastName { get; set; }
         public String PhoneNumber { get; set; }

@@ -4,17 +4,17 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace HotelProject.Models
+namespace CaldwellHotels.Models
 {
     public class Reservation
     {
         public int ReservationID { get; set; } //PK
-        [Required]
-        public Person PersonID { get; set; } //FK
-        [Required]
-        public Room RoomID { get; set; } //FK
-        [Required]
+
+        public Person Person { get; set; } //FK
+        public Room Room { get; set; } //FK
         public DateTime StartDate { get; set; }
         public DateTime EndDate { get; set; }
+        public int PersonID { get; set; } //FK
+        public int RoomID { get; set; } //FK
     }
 }

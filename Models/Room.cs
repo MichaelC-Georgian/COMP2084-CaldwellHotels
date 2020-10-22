@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace HotelProject.Models
+namespace CaldwellHotels.Models
 {
     public class Room
     {
