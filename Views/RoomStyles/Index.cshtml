@@ -6,10 +6,12 @@
 }
 
 <h1>Room Style Explorer</h1>
-
-<p>
+@if (User.IsInRole("Administrator"))
+{
+    <p>
     <a asp-action="Create">Create New</a>
-</p>
+    </p>
+}
 <table class="table">
     <thead>
         <tr>
@@ -44,9 +46,19 @@
                 @Html.DisplayFor(modelItem => item.KitchenDescription)
             </td>
             <td>
-                <a asp-action="Edit" asp-route-id="@item.StyleID">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.StyleID">Details</a> |
+                @if (User.IsInRole("Administrator"))
+                {
+                <a asp-action="Edit" asp-route-id="@item.StyleID">Edit</a>
+                <p class="d-inline">|</p> //Forces inline symbol, rather than block
+                }
+
+                <a asp-action="Details" asp-route-id="@item.StyleID">Details</a>
+
+                @if (User.IsInRole("Administrator"))
+                { 
+                <p class="d-inline">|</p> //Forces inline symbol, rather than block
                 <a asp-action="Delete" asp-route-id="@item.StyleID">Delete</a>
+                }
             </td>
         </tr>
 }

@@ -6,10 +6,11 @@
 }
 
 <h1>People Explorer</h1>
-
+@if (User.IsInRole("Administrator") || User.IsInRole("Employee")) { 
 <p>
     <a asp-action="Create">Create New</a>
 </p>
+}
 <table class="table">
     <thead>
         <tr>
@@ -74,9 +75,19 @@
                 @Html.DisplayFor(modelItem => item.PostalCode)
             </td>
             <td>
-                <a asp-action="Edit" asp-route-id="@item.PersonID">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.PersonID">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.PersonID">Delete</a>
+                @if (User.IsInRole("Administrator") || User.IsInRole("Employee")) //Show option if user is admin
+                {
+                    <a asp-action="Edit" asp-route-id="@item.PersonID">Edit</a>
+                    <p class="d-inline">|</p>   //Forces inline symbol, rather than block
+                }
+
+                <a asp-action="Details" asp-route-id="@item.PersonID">Details</a>
+
+                @if (User.IsInRole("Administrator") || User.IsInRole("Employee")) //Show option if user is admin
+                {
+                    <p class="d-inline" >|</p>  //Forces inline symbol, rather than block
+                    <a asp-action="Delete" asp-route-id="@item.PersonID">Delete</a>
+                }
             </td>
         </tr>
 }

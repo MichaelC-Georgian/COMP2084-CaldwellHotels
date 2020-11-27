@@ -7,9 +7,11 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using CaldwellHotels.Data;
 using CaldwellHotels.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace CaldwellHotels.Controllers
 {
+    [Authorize(Roles = "Administrator")]
     public class RoomsController : Controller
     {
         private readonly ApplicationDbContext _context;
@@ -20,6 +22,7 @@ namespace CaldwellHotels.Controllers
         }
 
         // GET: Rooms
+        [AllowAnonymous]
         public async Task<IActionResult> Index()
         {
             var applicationDbContext = _context.Rooms.Include(r => r.RoomStyle);
@@ -27,6 +30,7 @@ namespace CaldwellHotels.Controllers
         }
 
         // GET: Rooms/Details/5
+        [AllowAnonymous]
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)

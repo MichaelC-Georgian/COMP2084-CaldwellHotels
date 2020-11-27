@@ -6,10 +6,12 @@
 }
 
 <h1>Room Explorer</h1>
-
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
+@if (User.IsInRole("Administrator")) //Show option if user is admin or employee
+    {
+    <p>
+        <a asp-action="Create">Create New</a>
+    </p>
+    }
 <table class="table">
     <thead>
         <tr>
@@ -26,23 +28,35 @@
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.RoomFloor)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.RoomAccessible)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.RoomStyle.StyleID)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.RoomID">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.RoomID">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.RoomID">Delete</a>
-            </td>
-        </tr>
-}
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.RoomFloor)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.RoomAccessible)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.RoomStyle.StyleID)
+                </td>
+                <td>
+                    @if (User.IsInRole("Administrator")) //Show option if user is admin
+                    {
+                        <a asp-action="Edit" asp-route-id="@item.RoomID">Edit</a>
+                        <p class="d-inline">|</p>//Forces inline symbol, rather than block
+                    }
+                    
+                    <a asp-action="Details" asp-route-id="@item.RoomID">Details</a>
+
+
+                    @if (User.IsInRole("Administrator")) //Show option if user is admin
+                    {
+                        <p class="d-inline">|</p> //Forces inline symbol, rather than block
+                        <a asp-action="Delete" asp-route-id="@item.RoomID">Delete</a>
+                    }
+                </td>
+            </tr>
+        }
     </tbody>
 </table>

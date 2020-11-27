@@ -7,9 +7,11 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using CaldwellHotels.Data;
 using CaldwellHotels.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace CaldwellHotels.Controllers
 {
+    [Authorize(Roles = "Administrator,Employee")]
     public class ReservationsController : Controller
     {
         private readonly ApplicationDbContext _context;
@@ -20,6 +22,7 @@ namespace CaldwellHotels.Controllers
         }
 
         // GET: Reservations
+        [AllowAnonymous]
         public async Task<IActionResult> Index()
         {
             var applicationDbContext = _context.Reservations.Include(r => r.Persons).Include(r => r.Rooms);
@@ -27,6 +30,7 @@ namespace CaldwellHotels.Controllers
         }
 
         // GET: Reservations/Details/5
+        [AllowAnonymous]
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -47,6 +51,7 @@ namespace CaldwellHotels.Controllers
         }
 
         // GET: Reservations/Create
+        [Authorize]
         public IActionResult Create()
         {
             ViewData["PersonID"] = new SelectList(_context.Persons, "PersonID", "PersonID");

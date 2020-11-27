@@ -7,9 +7,11 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using CaldwellHotels.Data;
 using CaldwellHotels.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace CaldwellHotels.Controllers
 {
+    [Authorize(Roles = "Administrator")]
     public class RoomStylesController : Controller
     {
         private readonly ApplicationDbContext _context;
@@ -20,12 +22,14 @@ namespace CaldwellHotels.Controllers
         }
 
         // GET: RoomStyles
+        [AllowAnonymous]
         public async Task<IActionResult> Index()
         {
             return View(await _context.RoomStyles.ToListAsync());
         }
 
         // GET: RoomStyles/Details/5
+        [AllowAnonymous]
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -54,6 +58,7 @@ namespace CaldwellHotels.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        
         public async Task<IActionResult> Create([Bind("StyleID,BedroomDescription,BathroomDescription,KitchenDescription")] RoomStyle roomStyle)
         {
             if (ModelState.IsValid)
