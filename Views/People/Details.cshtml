@@ -68,6 +68,10 @@
     </dl>
 </div>
 <div>
-    <a asp-action="Edit" asp-route-id="@Model.PersonID">Edit</a> |
+    @if (User.IsInRole("Administrator")) //Show option if user is admin
+    {
+    <a asp-action="Edit" asp-route-id="@Model.PersonID">Edit</a>
+    <p class="d-inline">|</p> //Forces inline symbol, rather than block
+    }
     <a asp-action="Index">Back to List</a>
 </div>
